@@ -1,0 +1,78 @@
+require 'nn'
+import 'torch'
+
+local CrossEntropyCriterion1, Criterion = torch.class('nn.CrossEntropyCriterion1', 'nn.Criterion')
+
+function CrossEntropyCriterion1:__init(weights, alpha, beta, gamma, p)
+   Criterion.__init(self)
+   self. alpha = alpha
+   self.beta = beta
+   self.gamma = gamma
+   self.lsm = nn.LogSoftMax()
+   self.nll = nn.ClassNLLCriterion(weights)
+   self.p = p
+   self.rplus = 0
+   self.rminus = 0
+end
+
+function CrossEntropyCriterion1:updateOutput(input, target)
+   input = input:squeeze()
+   target = type(target) == 'number' and target or target:squeeze()
+   self.lsm:updateOutput(input)
+   self.nll:updateOutput(self.lsm.output, target)
+   self.output = self.nll.output
+   
+   print(target)
+   if type(target) == 'number' then
+      test = (target == 1)
+   else
+      const1 = (self.gamma[1]*self.alpha[1]+self.gamma[2]*self.beta[1])
+      probv5 = torch.eq(target,5):double():cmul(self.lsm.output:select(2,5):double())
+      self.rplus = (1/input:size(1))*(1/self.p)* sum(probv5) * const1
+      print(self.rplus)
+      const2 = (self.gamma[1]*self.alpha[2]+self.gamma[2]*self.beta[2])
+      probv6 = torch.eq(target,6):double():cmul(input:select(2,6):double())
+      self.rminus = (1/input:size(1))*(1/(1-self.p))* sum(probv6) * const2
+      print(self.rminus)
+   --rminus = (1/input:size(1))*(1/(1-p))* torch.eq(target,6):torch.cmul(self.lsm.output:torch.select(2,6)) * (gamma[1]*alpha[2]+gamma[2]*beta[2])
+   --others = (1/input:size(1))*(1/3))* torch.eq(target,1):torch.cmul(self.lsm.output:torch.select(2,1)) +
+            --(1/input:size(1))*(1/3))* torch.eq(target,2):torch.cmul(self.lsm.output:torch.select(2,2)) +
+            --(1/input:size(1))*(1/3))* torch.eq(target,3):torch.cmul(self.lsm.output:torch.select(2,3)) +
+            --(1/input:size(1))*(1/3))* torch.eq(target,4):torch.cmul(self.lsm.output:torch.select(2,4))
+   end
+   
+   --return torch.sum(torch.eq(target,1)) torch.sum(torch.eq(target,2)) torch.sum(torch.eq(target,3)) torch.sum(torch.eq(target,4)) torch.sum(torch.eq(target,5)) torch.sum(torch.eq(target,6))
+   return self.output
+end
+
+function CrossEntropyCriterion1:parameters(alpha,beta, gamma)
+   self. alpha = alpha
+   self.beta = beta
+   self.gamma = gamma
+   print('Alpha')
+   print(alpha)
+   print('Beta')
+   print(beta)
+   print('gamma')
+   print(gamma)
+end
+
+function CrossEntropyCriterion1:rplusFn()
+   return self.rplus
+end
+
+function CrossEntropyCriterion1:rminusFn()
+   return self.rminus
+end
+
+function CrossEntropyCriterion1:updateGradInput(input, target)
+   local size = input:size()
+   input = input:squeeze()
+   target = type(target) == 'number' and target or target:squeeze()
+   self.nll:updateGradInput(self.lsm.output, target)
+   self.lsm:updateGradInput(input, self.nll.gradInput)
+   self.gradInput:view(self.lsm.gradInput, size)
+   return self.gradInput
+end
+
+--return nn.CrossEntropyCriterion
