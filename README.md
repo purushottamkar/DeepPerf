@@ -1,12 +1,5 @@
 # DeepPerf
 
-# training twitter model
-
-`th train1.lua -data_file data/twit/twit-train.hdf5 -val_data_file data/twit/twit-val.hdf5 -savefile twit-model`
-
-# evaluate
-`th evaluate1.lua -model twit-model_final.t7 -src_file data/twit/src-val.txt -output_file pred.txt -src_dict data/twit/twit.src.dict -targ_dict data/twit/twit.targ.dict`
-
 
 # For running DUPLE, DAME, DENIM and Struct-ANN
 
@@ -95,3 +88,15 @@ where the `[dataset]` variable is as usual and the variable `[loss_fn]` is defin
 1. Run the necessary training files to obtain the score files.
 2. Then run the necessary plot file i.e one of
    * `plot_[Fmeas, KLD, MinTPRTNR, QMean].py [x_axis_length]`
+
+
+# Twitter model
+
+## Training the model
+
+`th train1.lua -data_file data/twit/twit-train.hdf5 -val_data_file data/twit/twit-val.hdf5 -savefile twit-model`
+
+## Evaluate
+`th evaluate1.lua -model twit-model_final.t7 -src_file data/twit/src-val.txt -output_file pred.txt -src_dict data/twit/twit.src.dict -targ_dict data/twit/twit.targ.dict`
+
+
