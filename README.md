@@ -95,6 +95,3 @@ where the `[dataset]` variable is as usual and the variable `[loss_fn]` is defin
 1. Run the necessary training files to obtain the score files.
 2. Then run the necessary plot file i.e one of
    * `plot_[Fmeas, KLD, MinTPRTNR, QMean].py [x_axis_length]`
-=======
- Go into the `deep_non_decomp_src` folder to see detailed comments and the code.
->>>>>>> a6f1390b4a62ce0afb9f4de8ef992eac55c7919e
