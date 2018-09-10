@@ -6,11 +6,14 @@ For running DUPLE, DAME, DENIM and Struct-ANN
 
 Go into the `deep_non_decomp_src` folder to see the code.
 
-The following address are relative to the `deep_non_decomp_src` folder.
 
 # Code for running DUPLE, DENIM, DAME and Struct ANN
 
+
 I apologize in advance for this code being weirdly inconsistent in several ways. I have edited this code over a long period of time with significant breaks in between, which I blame for this inconsistency.
+
+The following address are relative to the `deep_non_decomp_src` folder.
+
 
 All the data is in the `datasets` folder and is read through the wrapper in `datasets/dataRead.py`.
 ## Concave measures and Benchmark
@@ -93,6 +96,8 @@ where the `[dataset]` variable is as usual and the variable `[loss_fn]` is defin
 
 # Twitter model
 
+The following addresses are relative to the `seq2seq-attn` folder.
+
 ## Training the model
 
 `th train1.lua -data_file data/twit/twit-train.hdf5 -val_data_file data/twit/twit-val.hdf5 -savefile twit-model`
@@ -104,7 +109,7 @@ where the `[dataset]` variable is as usual and the variable `[loss_fn]` is defin
 If you use this code please cite the paper
 
 ```
-@Article{Sanyal2018,
+@Article{Sansyal2018,
 author="Sanyal, Amartya
 and Kumar, Pawan
 and Kar, Purushottam
