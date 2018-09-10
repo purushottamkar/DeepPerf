@@ -1,5 +1,6 @@
 # DeepPerf
 
+[Paper Link: Optimizing non-decomposable measures with deep networks](https://link.springer.com/article/10.1007/s10994-018-5736-y) 
 
 For running DUPLE, DAME, DENIM and Struct-ANN
 
@@ -100,3 +101,23 @@ where the `[dataset]` variable is as usual and the variable `[loss_fn]` is defin
 `th evaluate1.lua -model twit-model_final.t7 -src_file data/twit/src-val.txt -output_file pred.txt -src_dict data/twit/twit.src.dict -targ_dict data/twit/twit.targ.dict`
 
 
+If you use this code please cite the paper
+
+```
+@Article{Sanyal2018,
+author="Sanyal, Amartya
+and Kumar, Pawan
+and Kar, Purushottam
+and Chawla, Sanjay
+and Sebastiani, Fabrizio",
+title="Optimizing non-decomposable measures with deep networks",
+journal="Machine Learning",
+year="2018",
+month="Sep",
+day="01",
+volume="107",
+number="8",
+pages="1597--1620",
+doi="10.1007/s10994-018-5736-y",
+}
+```
