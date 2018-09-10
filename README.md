@@ -1,13 +1,13 @@
 # DeepPerf
 
 
-# For running DUPLE, DAME, DENIM and Struct-ANN
+For running DUPLE, DAME, DENIM and Struct-ANN
 
 Go into the `deep_non_decomp_src` folder to see the code.
 
 The following address are relative to the `deep_non_decomp_src` folder.
 
-# Code for runnind DUPLE, DENIM, DAME and Struct ANN
+# Code for running DUPLE, DENIM, DAME and Struct ANN
 
 I apologize in advance for this code being weirdly inconsistent in several ways. I have edited this code over a long period of time with significant breaks in between, which I blame for this inconsistency.
 
