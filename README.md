@@ -2,7 +2,7 @@
 
 [Paper Link: Optimizing non-decomposable measures with deep networks](https://link.springer.com/article/10.1007/s10994-018-5736-y)
 
-[Code Link:](https://github.com/amartya18x/DeepPerf)
+[Code Link, here](https://github.com/amartya18x/DeepPerf)
 
 For running DUPLE, DAME, DENIM and Struct-ANN
 
