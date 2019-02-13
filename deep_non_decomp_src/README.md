@@ -1,21 +1,6 @@
-# DeepPerf
-
-[Paper Link: Optimizing non-decomposable measures with deep networks](https://link.springer.com/article/10.1007/s10994-018-5736-y)
-
-[Code Link, here](https://github.com/amartya18x/DeepPerf)
-
-For running DUPLE, DAME, DENIM and Struct-ANN
-
-Go into the `deep_non_decomp_src` folder to see the code.
-
-
-# Code for running DUPLE, DENIM, DAME and Struct ANN
-
+# Code for runnind DUPLE, DENIM, DAME and Struct ANN
 
 I apologize in advance for this code being weirdly inconsistent in several ways. I have edited this code over a long period of time with significant breaks in between, which I blame for this inconsistency.
-
-The following address are relative to the `deep_non_decomp_src` folder.
-
 
 All the data is in the `datasets` folder and is read through the wrapper in `datasets/dataRead.py`.
 ## Concave measures and Benchmark
@@ -94,37 +79,3 @@ where the `[dataset]` variable is as usual and the variable `[loss_fn]` is defin
 1. Run the necessary training files to obtain the score files.
 2. Then run the necessary plot file i.e one of
    * `plot_[Fmeas, KLD, MinTPRTNR, QMean].py [x_axis_length]`
-
-
-# Twitter model
-
-The following addresses are relative to the `seq2seq-attn` folder.
-
-## Training the model
-
-`th train1.lua -data_file data/twit/twit-train.hdf5 -val_data_file data/twit/twit-val.hdf5 -savefile twit-model`
-
-## Evaluate
-`th evaluate1.lua -model twit-model_final.t7 -src_file data/twit/src-val.txt -output_file pred.txt -src_dict data/twit/twit.src.dict -targ_dict data/twit/twit.targ.dict`
-
-
-If you use this code please cite the paper
-
-```
-@Article{Sansyal2018,
-author="Sanyal, Amartya
-and Kumar, Pawan
-and Kar, Purushottam
-and Chawla, Sanjay
-and Sebastiani, Fabrizio",
-title="Optimizing non-decomposable measures with deep networks",
-journal="Machine Learning",
-year="2018",
-month="Sep",
-day="01",
-volume="107",
-number="8",
-pages="1597--1620",
-doi="10.1007/s10994-018-5736-y",
-}
-```
